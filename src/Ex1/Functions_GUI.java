@@ -26,10 +26,13 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import junit.framework.Test;
+
 
 
 public class Functions_GUI implements functions,Serializable  {
-
+	public static Color[] Colors = {Color.blue, Color.cyan,
+			Color.MAGENTA, Color.ORANGE, Color.red, Color.GREEN, Color.PINK};
 	/**
 	 * 
 	 */
@@ -155,6 +158,7 @@ public class Functions_GUI implements functions,Serializable  {
 		double max_y_axis=ry.get_max() , min_y_axis=ry.get_min();
 		boolean flag=true;
 		int counter=0;
+		int k =0;
 		Color color = null;
 		for(function test:this.list) {
 			counter++;
@@ -210,11 +214,13 @@ public class Functions_GUI implements functions,Serializable  {
 				}
 			}
 
-			int randomValue = (int)(Math.random() * ((255 - 0) + 1)) + 0;
-			int randomValue_1 =(int)(Math.random() * ((255 - 0) + 1)) + 0;
-			int randomValue_2 =(int)(Math.random() * ((255 - 0) + 1)) + 0;
-			color= new Color(randomValue, randomValue_1, randomValue_2);
-			StdDraw.setPenColor(color);
+			//int randomValue = (int)(Math.random() * ((6 - 0) + 1)) + 0;
+			//int randomValue_1 =(int)(Math.random() * ((255 - 0) + 1)) + 0;
+			//int randomValue_2 =(int)(Math.random() * ((255 - 0) + 1)) + 0;
+			//color= new Color(randomValue, randomValue_1, randomValue_2);
+			
+			StdDraw.setPenColor(Colors[k]);
+			k=(k+1)%Colors.length;
 			for (int i = 0; i < n; i++) {
 
 				StdDraw.line(x[i], y[i], x[i+1], y[i+1]);
@@ -264,6 +270,15 @@ public class Functions_GUI implements functions,Serializable  {
 //		Range x = new Range(-20, 20);
 //		test.drawFunctions(1280, 720, x, x_y, 100);
 
+		functions ans = new Functions_GUI();
+		ans.add(new Polynom("x^2"));
+		//ans.add(new Polynom("x^2-50"));
+		ans.add(new Polynom("x^2+50"));
+		ans.add(new Polynom("x^3"));
+		ans.add(new Polynom("x^3-50"));
+		//ans.add(new Polynom("x^3+50"));
+		ans.drawFunctions("GUI_params.txt");
+		
 	}
 
 }
