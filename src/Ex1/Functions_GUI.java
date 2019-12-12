@@ -213,21 +213,15 @@ public class Functions_GUI implements functions,Serializable  {
 					StdDraw.text(mid-(2.6*(max_y_axis/100.0)), min_y_axis+i, Integer.toString((int)min_y_axis+i));
 				}
 			}
-
-			//int randomValue = (int)(Math.random() * ((6 - 0) + 1)) + 0;
-			//int randomValue_1 =(int)(Math.random() * ((255 - 0) + 1)) + 0;
-			//int randomValue_2 =(int)(Math.random() * ((255 - 0) + 1)) + 0;
-			//color= new Color(randomValue, randomValue_1, randomValue_2);
-			
 			StdDraw.setPenColor(Colors[k]);
-			k=(k+1)%Colors.length;
 			for (int i = 0; i < n; i++) {
 
 				StdDraw.line(x[i], y[i], x[i+1], y[i+1]);
 
 
 			}
-			System.out.println(counter+") "+color+", "+"f(x)= "+test+" .");
+			System.out.println(counter+") "+Colors[k]+", "+"f(x)= "+test+" .");
+			k=(k+1)%Colors.length;
 		}
 
 
@@ -262,13 +256,13 @@ public class Functions_GUI implements functions,Serializable  {
 
 	}
 	public static void main(String[] args) throws Exception {
-//		Functions_GUI test = new Functions_GUI();
-//		test.add(new Polynom("x^2"));
-//		test.add(new Polynom("x^3"));
-//		test.add(new Polynom("x+5"));
-//		Range x_y= new Range(-100, 100);
-//		Range x = new Range(-20, 20);
-//		test.drawFunctions(1280, 720, x, x_y, 100);
+		//		Functions_GUI test = new Functions_GUI();
+		//		test.add(new Polynom("x^2"));
+		//		test.add(new Polynom("x^3"));
+		//		test.add(new Polynom("x+5"));
+		//		Range x_y= new Range(-100, 100);
+		//		Range x = new Range(-20, 20);
+		//		test.drawFunctions(1280, 720, x, x_y, 100);
 
 		functions ans = new Functions_GUI();
 		ans.add(new Polynom("x^2"));
@@ -278,7 +272,7 @@ public class Functions_GUI implements functions,Serializable  {
 		ans.add(new Polynom("x^3-50"));
 		//ans.add(new Polynom("x^3+50"));
 		ans.drawFunctions("GUI_params.txt");
-		
+
 	}
 
 }
